@@ -11,6 +11,7 @@
 
     <modules>
         <module>file-consumer</module>
+        <module>properties-component-example</module>
     </modules>
 
     <properties>
@@ -34,16 +35,6 @@
 
     <build>
         <plugins>
-            <!-- This plugin enables run via mvn camel:run -->
-            <plugin>
-                <groupId>org.apache.camel</groupId>
-                <artifactId>camel-maven-plugin</artifactId>
-                <version>${camel.version}</version>
-                <configuration>
-                    <applicationContextUri>OSGI-INF/blueprint/blueprint.xml</applicationContextUri>
-                    <mainClass>osgi.CamelOsgiTest</mainClass>
-                </configuration>
-            </plugin>
             <!-- Maven compiler plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

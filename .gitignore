@@ -1,4 +1,7 @@
-/out/
-/.idea/
-/target/
-*.iml
+target
+.idea
+*.i??
+.classpath
+.project
+.settings
+.metadata
