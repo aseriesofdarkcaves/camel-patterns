@@ -12,6 +12,7 @@
     <modules>
         <module>file-consumer</module>
         <module>properties-component-example</module>
+        <module>ftp-consumer</module>
     </modules>
 
     <properties>
