@@ -1,4 +1,5 @@
 import model.Item;
+import model.Order;
 import org.apache.camel.CamelContext;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
@@ -21,14 +22,19 @@ public class TransformWithJackson {
             public void configure() throws Exception {
                 JacksonDataFormat jsonFormat = new JacksonDataFormat();
 
-                Item item = new Item();
-                item.setItemId("12345");
-                item.setItemDescription("Can of beans");
+                Item item1 = new Item("12345");
+                item1.setItemDescription("Can of beans");
 
-                // TODO: figure out how this is supposed to work
+                Item item2 = new Item("11111");
+                item2.setItemDescription("Beer");
+
+                Order order = new Order("21");
+                order.addItem(item1);
+                order.addItem(item2);
+
                 from("timer:timer?repeatCount=1")
                         .id(ROUTE_ID)
-                        .setBody().constant(item)
+                        .setBody().constant(order)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE)
                         .marshal(jsonFormat)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE);

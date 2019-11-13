@@ -1,12 +1,20 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
     private String orderId;
     private List<Item> items;
 
-    public Order() {}
+    public Order() {
+        this.items = new ArrayList<>();
+    }
+
+    public Order(String orderId) {
+        this();
+        this.orderId = orderId;
+    }
 
     public String getOrderId() {
         return orderId;
@@ -28,10 +36,6 @@ public class Order {
     public List<Item> getItems() {
         return items;
     }
-
-//    public void setItems(List<Item> items) {
-//        this.items = items;
-//    }
 
     public void addItem(Item item) {
         this.items.add(item);

@@ -6,6 +6,11 @@ public class Item {
 
     public Item() {}
 
+    public Item(String itemId) {
+        this();
+        this.itemId = itemId;
+    }
+
     public String getItemId() {
         return itemId;
     }
