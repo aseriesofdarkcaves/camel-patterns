@@ -1,6 +1,9 @@
+import com.thoughtworks.xstream.XStream;
+import model.Item;
 import org.apache.camel.CamelContext;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.dataformat.xstream.XStreamDataFormat;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.main.Main;
 
@@ -17,11 +20,20 @@ public class TransformWithXStream {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("file:data/transformation/xml?noop=true")
+                XStreamDataFormat xStreamFormat = new XStreamDataFormat();
+                XStream xStream = new XStream();
+                xStream.alias("item", Item.class);
+                xStreamFormat.setXStream(xStream);
+
+                Item item = new Item();
+                item.setItemId("12345");
+                item.setItemDescription("Can of beans");
+
+                from("timer:timer?repeatCount=1")
                         .id(ROUTE_ID)
+                        .setBody().constant(item)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE)
-                        // TODO: use some form of POJO to see if we can marshal to XML via XStream
-                        .marshal().xstream()
+                        .marshal(xStreamFormat)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE);
             }
         });

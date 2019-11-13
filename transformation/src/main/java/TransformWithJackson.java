@@ -20,6 +20,7 @@ public class TransformWithJackson {
             @Override
             public void configure() throws Exception {
                 JacksonDataFormat jsonFormat = new JacksonDataFormat();
+
                 Item item = new Item();
                 item.setItemId("12345");
                 item.setItemDescription("Can of beans");
@@ -27,6 +28,8 @@ public class TransformWithJackson {
                 // TODO: figure out how this is supposed to work
                 from("timer:timer?repeatCount=1")
                         .id(ROUTE_ID)
+                        .setBody().constant(item)
+                        .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE)
                         .marshal(jsonFormat)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE);
             }

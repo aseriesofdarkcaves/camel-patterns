@@ -1,15 +1,15 @@
-import expression.StringToHtmlBreakTransformer;
+import beans.PropertiesToCsvBean;
 import org.apache.camel.CamelContext;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.main.Main;
 
-public class MessageTranslatorTransform {
-    private static final String LOGGER = MessageTranslatorTransform.class.getCanonicalName();
+public class TransformWithBean {
+    private static final String LOGGER = TransformWithBean.class.getCanonicalName();
     private static final String LOG_MESSAGE = "HEADERS:\r\n${headers}\r\nBODY:\r\n${body}";
-    private static final String ROUTE_ID = MessageTranslatorTransform.class.getCanonicalName();
-    private static final String BODY = "This is some dummy text.\r\nThis is some more dummy text";
+    private static final String ROUTE_ID = TransformWithBean.class.getCanonicalName();
+    private static final String PROPERTIES_INPUT = "FirstField=1\r\nSecondField=2\r\nThirdField=3\r\n";
 
     public static void main(String... args) throws Exception {
         Main main = new Main();
@@ -20,10 +20,10 @@ public class MessageTranslatorTransform {
             @Override
             public void configure() throws Exception {
                 from("timer:timer?repeatCount=1")
-                        .setBody().constant(BODY)
+                        .id(ROUTE_ID)
+                        .setBody().constant(PROPERTIES_INPUT)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE)
-                        //.transform(body().regexReplaceAll("\r\n", "<br/>"))
-                        .transform(new StringToHtmlBreakTransformer())
+                        .bean(new PropertiesToCsvBean())
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE);
             }
         });

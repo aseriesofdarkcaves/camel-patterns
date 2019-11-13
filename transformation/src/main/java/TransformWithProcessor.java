@@ -1,14 +1,14 @@
-import beans.PropertiesToCsvBean;
 import org.apache.camel.CamelContext;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.main.Main;
+import processor.PropertiesToCsvProcessor;
 
-public class MessageTranslatorBean {
-    private static final String LOGGER = MessageTranslatorBean.class.getCanonicalName();
+public class TransformWithProcessor {
+    private static final String LOGGER = TransformWithProcessor.class.getCanonicalName();
     private static final String LOG_MESSAGE = "HEADERS:\r\n${headers}\r\nBODY:\r\n${body}";
-    private static final String ROUTE_ID = MessageTranslatorBean.class.getCanonicalName();
+    private static final String ROUTE_ID = TransformWithProcessor.class.getCanonicalName();
     private static final String PROPERTIES_INPUT = "FirstField=1\r\nSecondField=2\r\nThirdField=3\r\n";
 
     public static void main(String... args) throws Exception {
@@ -23,7 +23,7 @@ public class MessageTranslatorBean {
                         .id(ROUTE_ID)
                         .setBody().constant(PROPERTIES_INPUT)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE)
-                        .bean(new PropertiesToCsvBean())
+                        .process(new PropertiesToCsvProcessor())
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE);
             }
         });
