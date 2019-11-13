@@ -1,10 +1,10 @@
 package model;
 
-class Item {
+public class Item {
     private String itemId;
     private String itemDescription;
 
-    Item() {}
+    public Item() {}
 
     public String getItemId() {
         return itemId;

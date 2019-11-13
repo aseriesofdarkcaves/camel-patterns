@@ -2,11 +2,11 @@ package model;
 
 import java.util.List;
 
-class Order {
+public class Order {
     private String orderId;
     private List<Item> items;
 
-    Order() {}
+    public Order() {}
 
     public String getOrderId() {
         return orderId;
