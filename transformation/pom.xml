@@ -10,4 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>transformation</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-xstream</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<order>
+    <orderId>00001</orderId>
+    <items>
+        <item>
+            <itemId>7337</itemId>
+            <itemDescription>Ted's Awesome Coffee Machine</itemDescription>
+        </item>
+        <item>
+            <itemId>1234</itemId>
+            <itemDescription>Fairtrade Coffee Beans</itemDescription>
+        </item>
+        <item>
+            <itemId>1234</itemId>
+            <itemDescription>Fairtrade Coffee Beans</itemDescription>
+        </item>
+    </items>
+</order>
