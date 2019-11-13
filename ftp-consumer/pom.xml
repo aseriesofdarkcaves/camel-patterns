@@ -15,6 +15,7 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-ftp</artifactId>
+            <version>${camel.version}</version>
         </dependency>
     </dependencies>
 

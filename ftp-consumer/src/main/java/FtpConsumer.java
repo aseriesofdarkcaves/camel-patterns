@@ -17,7 +17,7 @@ public class FtpConsumer {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("ftp:localhost/ftp-consumer?username=username&password=password")
+                from("ftp:localhost?username=username&password=password")
                         .id(ROUTE_ID)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE)
                         .to("file:data/ftp-consumer");
