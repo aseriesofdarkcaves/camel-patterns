@@ -1,4 +1,4 @@
-package beans;
+package model;
 
 class Item {
     private String itemId;
