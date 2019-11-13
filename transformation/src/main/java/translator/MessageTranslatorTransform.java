@@ -1,5 +1,6 @@
 package translator;
 
+import expression.StringToHtmlBreakTransformer;
 import org.apache.camel.CamelContext;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
@@ -23,7 +24,8 @@ public class MessageTranslatorTransform {
                 from("timer:timer?repeatCount=1")
                         .setBody().constant(BODY)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE)
-                        .transform(body().regexReplaceAll("\r\n", "<br/>"))
+                        //.transform(body().regexReplaceAll("\r\n", "<br/>"))
+                        .transform(new StringToHtmlBreakTransformer())
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE);
             }
         });
