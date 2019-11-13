@@ -13,6 +13,7 @@
         <module>file-consumer</module>
         <module>properties-component-example</module>
         <module>ftp-consumer</module>
+        <module>transformation</module>
     </modules>
 
     <properties>

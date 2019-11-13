@@ -6,7 +6,7 @@ import org.apache.camel.main.Main;
 
 public class FtpConsumer {
     private static final String LOGGER = FtpConsumer.class.getCanonicalName();
-    private static final String LOG_MESSAGE = "HEADERS:\r\n${headers}\r\nBODY:${body}";
+    private static final String LOG_MESSAGE = "HEADERS:\r\n${headers}\r\nBODY:\r\n${body}";
     private static final String ROUTE_ID = FtpConsumer.class.getCanonicalName();
 
     public static void main(String... args) throws Exception {
