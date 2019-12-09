@@ -20,6 +20,7 @@ public class TransformWithTransformEip {
             @Override
             public void configure() throws Exception {
                 from("timer:timer?repeatCount=1")
+                        .id(ROUTE_ID)
                         .setBody().constant(BODY)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE)
                         //.transform(body().regexReplaceAll("\r\n", "<br/>"))
