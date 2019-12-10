@@ -14,6 +14,7 @@
         <module>properties-component-example</module>
         <module>ftp-consumer</module>
         <module>transformation</module>
+        <module>mdc-logging</module>
     </modules>
 
     <properties>
