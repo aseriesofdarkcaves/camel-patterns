@@ -1,16 +1,18 @@
-import model.Item;
-import model.Order;
+package com.asodc.camel;
+
+import com.thoughtworks.xstream.XStream;
+import com.asodc.camel.model.Item;
 import org.apache.camel.CamelContext;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.jackson.JacksonDataFormat;
+import org.apache.camel.dataformat.xstream.XStreamDataFormat;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.main.Main;
 
-public class TransformWithJackson {
-    private static final String LOGGER = TransformWithJackson.class.getCanonicalName();
+public class TransformWithXStream {
+    private static final String LOGGER = TransformWithXStream.class.getCanonicalName();
     private static final String LOG_MESSAGE = "HEADERS:\r\n${headers}\r\nBODY:\r\n${body}";
-    private static final String ROUTE_ID = TransformWithJackson.class.getCanonicalName();
+    private static final String ROUTE_ID = TransformWithXStream.class.getCanonicalName();
 
     public static void main(String... args) throws Exception {
         Main main = new Main();
@@ -20,23 +22,20 @@ public class TransformWithJackson {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                JacksonDataFormat jsonFormat = new JacksonDataFormat();
+                XStreamDataFormat xStreamFormat = new XStreamDataFormat();
+                XStream xStream = new XStream();
+                xStream.alias("item", Item.class);
+                xStreamFormat.setXStream(xStream);
 
-                Item item1 = new Item("12345");
-                item1.setItemDescription("Can of beans");
-
-                Item item2 = new Item("11111");
-                item2.setItemDescription("Beer");
-
-                Order order = new Order("21");
-                order.addItem(item1);
-                order.addItem(item2);
+                Item item = new Item();
+                item.setItemId("12345");
+                item.setItemDescription("Can of com.asodc.camel.beans");
 
                 from("timer:timer?repeatCount=1")
                         .id(ROUTE_ID)
-                        .setBody().constant(order)
+                        .setBody().constant(item)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE)
-                        .marshal(jsonFormat)
+                        .marshal(xStreamFormat)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE);
             }
         });

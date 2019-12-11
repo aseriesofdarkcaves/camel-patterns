@@ -1,4 +1,4 @@
-package beans;
+package com.asodc.camel.beans;
 
 public class PropertiesToCsvBean {
     private static final String CSV_FIELD_DELIMITER = ";";

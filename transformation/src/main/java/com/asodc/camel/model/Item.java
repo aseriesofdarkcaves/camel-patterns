@@ -1,4 +1,4 @@
-package model;
+package com.asodc.camel.model;
 
 public class Item {
     private String itemId;

@@ -1,3 +1,5 @@
+package com.asodc.camel;
+
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
@@ -30,7 +32,7 @@ public class MdcLogging {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                MDC.put(MY_MDC_KEY, "We're in MdcLogging.main.configure()!");
+                MDC.put(MY_MDC_KEY, "We're in com.asodc.camel.MdcLogging.main.configure()!");
                 applicatonLogger.info(LOG_MESSAGE);
                 from("timer:route1Timer?period=3000")
                         .id("Route1")
@@ -38,7 +40,7 @@ public class MdcLogging {
                         .process(new Processor() {
                             @Override
                             public void process(Exchange exchange) throws Exception {
-                                MDC.put(MY_MDC_KEY, "We're in MdcLogging.main.configure.process()!");
+                                MDC.put(MY_MDC_KEY, "We're in com.asodc.camel.MdcLogging.main.configure.process()!");
                             }
                         })
                         // This is Camel Java DSL logging

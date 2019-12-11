@@ -1,4 +1,4 @@
-package model;
+package com.asodc.camel.model;
 
 import java.util.ArrayList;
 import java.util.List;
