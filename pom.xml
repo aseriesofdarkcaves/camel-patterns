@@ -15,6 +15,7 @@
         <module>ftp-consumer</module>
         <module>transformation</module>
         <module>mdc-logging</module>
+        <module>osgi-bootstrap-blueprint</module>
     </modules>
 
     <properties>
