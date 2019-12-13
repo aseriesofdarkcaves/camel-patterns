@@ -17,7 +17,8 @@ public class PropertiesComponentExample {
         context.setUseMDCLogging(true);
 
         PropertiesComponent properties = context.getComponent("properties", PropertiesComponent.class);
-        properties.setLocation("classpath:com.asodc.camel.PropertiesComponentExample.properties");
+
+        properties.setLocation("classpath:PropertiesComponentExample.properties");
 
         context.addRoutes(new RouteBuilder() {
             @Override
