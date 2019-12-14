@@ -16,6 +16,7 @@
         <module>transformation</module>
         <module>mdc-logging</module>
         <module>osgi-bootstrap-blueprint</module>
+        <module>content-enricher</module>
     </modules>
 
     <properties>
@@ -31,6 +32,7 @@
             <artifactId>camel-core</artifactId>
             <version>${camel.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
