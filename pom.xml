@@ -18,11 +18,13 @@
         <module>osgi-bootstrap-blueprint</module>
         <module>content-enricher</module>
         <module>set-header</module>
+        <module>jms-producer</module>
     </modules>
 
     <properties>
         <camel.version>2.21.2</camel.version>
         <log4j2.version>2.12.1</log4j2.version>
+        <activemq.version>5.15.5</activemq.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
