@@ -17,6 +17,7 @@
         <module>mdc-logging</module>
         <module>osgi-bootstrap-blueprint</module>
         <module>content-enricher</module>
+        <module>set-header</module>
     </modules>
 
     <properties>
