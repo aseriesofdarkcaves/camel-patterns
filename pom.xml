@@ -20,6 +20,7 @@
         <module>set-header</module>
         <module>jms-producer</module>
         <module>jms-consumer</module>
+        <module>camel-simple</module>
     </modules>
 
     <properties>

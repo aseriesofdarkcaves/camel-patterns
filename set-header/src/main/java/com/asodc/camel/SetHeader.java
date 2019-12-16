@@ -6,7 +6,7 @@ import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.main.Main;
 
 public class SetHeader {
-    public static void main(String... args) throws Exception{
+    public static void main(String... args) throws Exception {
         Main main = new Main();
         CamelContext context = new DefaultCamelContext();
         context.setUseMDCLogging(true);
@@ -15,6 +15,7 @@ public class SetHeader {
             @Override
             public void configure() {
                 from("timer:start?repeatCount=1")
+                        .id("SetHeaderRoute")
                         .setHeader("SetHeader-1").constant("Header set via fluent builder chain")
                         .setHeader("SetHeader-2", constant("Header set via expression"))
                         .log("Headers:\r\n${headers}\r\n\r\nBody:\r\n${body}");
