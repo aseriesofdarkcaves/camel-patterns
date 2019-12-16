@@ -1,13 +1,12 @@
 package com.asodc.camel;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.pool.PooledConnectionFactory;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.main.Main;
-
-import javax.jms.ConnectionFactory;
 
 public class JmsConsumer {
     public static void main(String... args) throws Exception {
@@ -15,8 +14,12 @@ public class JmsConsumer {
         CamelContext context = new DefaultCamelContext();
         context.setUseMDCLogging(true);
 
-        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
-        context.addComponent("jms", JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
+        //ConnectionFactory activeMqConnection = new ActiveMQConnectionFactory("tcp://localhost:61616");
+
+        PooledConnectionFactory pooledConnection = new PooledConnectionFactory(new ActiveMQConnectionFactory("tcp://localhost:61616"));
+        //pooledConnection.setConnectionFactory(activeMqConnection);
+
+        context.addComponent("jms", JmsComponent.jmsComponentTransacted(pooledConnection));
 
         context.addRoutes(new RouteBuilder() {
             @Override
