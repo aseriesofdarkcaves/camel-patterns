@@ -17,6 +17,7 @@
         <module>mdc-logging</module>
         <module>osgi-bootstrap-blueprint</module>
         <module>content-enricher</module>
+        <module>http-client</module>
         <module>set-header</module>
         <module>jms-producer</module>
         <module>jms-consumer</module>
