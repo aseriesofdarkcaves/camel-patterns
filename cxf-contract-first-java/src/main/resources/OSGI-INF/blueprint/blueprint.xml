@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+           xmlns:cxf="http://camel.apache.org/schema/cxf"
+           xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
+
+    <!-- OSGI blueprint property placeholder -->
+    <cm:property-placeholder persistent-id="com.asodc.camel.CxfContractFirst">
+        <!-- list some properties as needed -->
+        <cm:default-properties>
+            <cm:property name="log.message" value="Hello OSGi World!"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
+
+    <!-- CXF in blueprint? -->
+    <cxf:cxfEndpoint id="orderEndpoint"
+                     address="http://localhost:9000/order/"
+                     serviceClass="com.asodc.camel.OrderEndpoint"
+                     wsdlURL="wsdl/order.wsdl"/>
+
+    <!-- bean to identify which class to bootstrap -->
+    <bean id="CxfContractFirst" class="com.asodc.camel.CxfContractFirst" />
+
+    <!-- create a CamelContext that injects the bean into a RouteBuilder -->
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="org.asodc.camel.CxfContractFirst" useMDCLogging="true">
+        <routeBuilder ref="CxfContractFirst" />
+    </camelContext>
+</blueprint>

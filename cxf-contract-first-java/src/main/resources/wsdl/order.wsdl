@@ -1,0 +1,51 @@
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://camel.asodc.com"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  targetNamespace="http://camel.asodc.com">
+    <wsdl:types>
+        <xs:schema targetNamespace="http://camel.asodc.com">
+            <xs:element type="xs:string" name="partName" />
+            <xs:element type="xs:int" name="amount" />
+            <xs:element type="xs:string" name="customerName" />
+            <xs:element type="xs:string" name="resultCode" />
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="purchaseOrder">
+        <wsdl:part name="partName" element="tns:partName" />
+        <wsdl:part name="amount" element="tns:amount"/>
+        <wsdl:part name="customerName" element="tns:customerName"/>
+    </wsdl:message>
+
+    <wsdl:message name="orderResult">
+        <wsdl:part name="resultCode" element="tns:resultCode" />
+    </wsdl:message>
+
+    <wsdl:portType name="OrderEndpoint">
+        <wsdl:operation name="Order">
+            <wsdl:input message="tns:purchaseOrder" />
+            <wsdl:output message="tns:orderResult" />
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="OrderBinding" type="tns:OrderEndpoint">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="Order">
+            <soap:operation soapAction="http://camel.asodc.com/Order" style="document" />
+            <wsdl:input>
+                <soap:body parts="in" use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="out" use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="OrderEndpointService">
+        <wsdl:port name="OrderService" binding="tns:OrderBinding">
+            <soap:address location="http://localhost:9000/order" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
