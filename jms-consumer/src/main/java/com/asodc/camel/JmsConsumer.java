@@ -15,10 +15,8 @@ public class JmsConsumer {
         context.setUseMDCLogging(true);
 
         //ConnectionFactory activeMqConnection = new ActiveMQConnectionFactory("tcp://localhost:61616");
-
         PooledConnectionFactory pooledConnection = new PooledConnectionFactory(new ActiveMQConnectionFactory("tcp://localhost:61616"));
         //pooledConnection.setConnectionFactory(activeMqConnection);
-
         context.addComponent("jms", JmsComponent.jmsComponentTransacted(pooledConnection));
 
         context.addRoutes(new RouteBuilder() {
