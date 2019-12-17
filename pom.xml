@@ -22,6 +22,7 @@
         <module>jms-producer</module>
         <module>jms-consumer</module>
         <module>camel-simple</module>
+        <module>cxf-contract-first-blueprint</module>
     </modules>
 
     <properties>
