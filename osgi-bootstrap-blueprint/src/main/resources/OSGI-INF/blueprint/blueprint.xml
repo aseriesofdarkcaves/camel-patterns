@@ -16,7 +16,7 @@
     <bean id="OsgiBootstrapBlueprint" class="com.asodc.camel.OsgiBootstrapBlueprint" />
 
     <!-- create a CamelContext that injects the bean into a RouteBuilder -->
-    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="org.asodc.camel.OsgiBootstrapBlueprint" useMDCLogging="true">
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="com.asodc.camel.OsgiBootstrapBlueprint" useMDCLogging="true">
         <routeBuilder ref="OsgiBootstrapBlueprint" />
     </camelContext>
 </blueprint>
