@@ -25,7 +25,7 @@ public class TransformWithTransformEip {
                         .id(ROUTE_ID)
                         .setBody().constant(BODY)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE)
-                        //.transform(body().regexReplaceAll("\r\n", "<br/>"))
+                        .transform(body().regexReplaceAll("\r\n", "<br/>"))
                         .transform(new StringToHtmlBreakTransformer())
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE);
             }
