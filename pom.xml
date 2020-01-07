@@ -24,6 +24,7 @@
         <module>camel-simple</module>
         <module>cxf-contract-first-blueprint</module>
         <module>cxf-contract-first-java</module>
+        <module>rest-dsl</module>
     </modules>
 
     <properties>
