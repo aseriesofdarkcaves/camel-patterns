@@ -1,4 +1,4 @@
-package com.asodc.camel;
+package com.asodc.camel.spark;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;

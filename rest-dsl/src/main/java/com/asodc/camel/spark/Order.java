@@ -1,4 +1,4 @@
-package com.asodc.camel;
+package com.asodc.camel.spark;
 
 public class Order {
     private int id;
