@@ -22,7 +22,6 @@
         <module>jms-producer</module>
         <module>jms-consumer</module>
         <module>camel-simple</module>
-        <module>cxf-contract-first-blueprint</module>
         <module>cxf-contract-first-java</module>
         <module>rest-dsl</module>
         <module>cxfrs-camel</module>
@@ -31,7 +30,7 @@
 
     <properties>
         <activemq.version>5.15.5</activemq.version>
-        <camel.version>2.21.2</camel.version>
+        <camel.version>2.24.0</camel.version>
         <cxf.version>3.2.10</cxf.version>
         <jackson.version>2.10.1</jackson.version>
         <log4j2.version>2.12.1</log4j2.version>
