@@ -9,7 +9,7 @@ public class RouteA extends RouteBuilder {
                 .log("Producing a new message...")
                 .setHeader("TestHeader").constant("HELLO WORLD!")
                 .log("Sending message to Route B...")
-                .to("vm:routeB")
+                .to("direct:routeB")
                 .log("Finished!");
     }
 }

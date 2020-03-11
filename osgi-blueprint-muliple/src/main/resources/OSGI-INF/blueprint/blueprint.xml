@@ -4,15 +4,19 @@
            xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
 
     <!-- bean to identify which class to bootstrap -->
-    <bean id="RouteA" class="com.asodc.camel.RouteA"/>
-    <bean id="RouteB" class="com.asodc.camel.RouteB"/>
+<!--    <bean id="RouteA" class="com.asodc.camel.RouteA"/>-->
+<!--    <bean id="RouteB" class="com.asodc.camel.RouteB"/>-->
+    <bean id="SuperBuilder" class="com.asodc.camel.SuperBuilder"/>
 
     <!-- create a CamelContext that injects the bean into a RouteBuilder -->
-    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="com.tsystems.mms.RouteA" useMDCLogging="true">
-        <routeBuilder ref="RouteA"/>
-    </camelContext>
+<!--    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="com.tsystems.mms.RouteA" useMDCLogging="true">-->
+<!--        <routeBuilder ref="RouteA"/>-->
+<!--    </camelContext>-->
 
-    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="com.tsystems.mms.RouteB" useMDCLogging="true">
-        <routeBuilder ref="RouteB"/>
+<!--    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="com.tsystems.mms.RouteB" useMDCLogging="true">-->
+<!--        <routeBuilder ref="RouteB"/>-->
+<!--    </camelContext>-->
+    <camelContext xmlns="http://camel.apache.org/schema/blueprint" id="com.tsystems.mms.SuperContext" useMDCLogging="true">
+        <routeBuilder ref="SuperBuilder"/>
     </camelContext>
 </blueprint>
