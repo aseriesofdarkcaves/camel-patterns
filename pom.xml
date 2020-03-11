@@ -25,7 +25,7 @@
         <module>cxf-contract-first-java</module>
         <module>rest-dsl</module>
         <module>cxfrs-camel</module>
-        <module>osgi-blueprint-muliple</module>
+        <module>osgi-blueprint-multiple</module>
     </modules>
 
     <properties>
