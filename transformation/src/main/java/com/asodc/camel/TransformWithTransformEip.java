@@ -25,6 +25,7 @@ public class TransformWithTransformEip {
                         .id(ROUTE_ID)
                         .setBody().constant(BODY)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE)
+                        // transform sets the body on the OUT message which gets passed to the next Exchange, where it become that Exchange's IN message
                         .transform(body().regexReplaceAll("\r\n", "<br/>"))
                         .transform(new StringToHtmlBreakTransformer())
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE);

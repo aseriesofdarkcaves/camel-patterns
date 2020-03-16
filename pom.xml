@@ -26,6 +26,7 @@
         <module>rest-dsl</module>
         <module>cxfrs-camel</module>
         <module>osgi-blueprint-multiple</module>
+        <module>camel-concepts</module>
     </modules>
 
     <properties>
