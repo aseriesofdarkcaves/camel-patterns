@@ -11,4 +11,11 @@
 
     <artifactId>camel-concepts</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-camel</artifactId>
+            <version>${activemq.version}</version>
+        </dependency>
+    </dependencies>
 </project>
