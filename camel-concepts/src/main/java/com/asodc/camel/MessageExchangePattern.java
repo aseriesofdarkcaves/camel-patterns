@@ -3,6 +3,7 @@ package com.asodc.camel;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.pool.PooledConnectionFactory;
 import org.apache.camel.CamelContext;
+import org.apache.camel.ExchangePattern;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
@@ -23,12 +24,11 @@ public class MessageExchangePattern {
                 // InOnly JMS Producer to trigger the jmsInOutConsumer
                 from("timer:timer?period=3000").routeId("jmsInOnlyProducer")
                         .setBody().constant("This message was produced via jmsInOnlyProducer")
-                        .to("jms:queue:RequestReplyTest.Request");
+                        .to(ExchangePattern.InOnly, "jms:queue:RequestReplyTest.Request");
 
-                // InOut JMS Consumer
+                // InOut JMS Consumer - using replyTo implicitly sets the MEP to InOut
                 from("jms:queue:RequestReplyTest.Request?replyTo=RequestReplyTest.Response").routeId("jmsInOutConsumer")
                         .setBody().constant("This message was produced by jmsInOutConsumer");
-//                        .transform().constant("This message was produced by jmsInOutConsumer");
 
                 // This just consumes the reply queue and logs a message to the console
                 from("jms:queue:RequestReplyTest.Response").routeId("jmsConsumerLogger")
