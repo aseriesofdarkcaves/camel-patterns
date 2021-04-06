@@ -6,10 +6,10 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.main.Main;
 
-public class FileConsumer {
-    private static final String LOGGER = FileConsumer.class.getCanonicalName();
+public class CamelLogger {
+    private static final String LOGGER = CamelLogger.class.getCanonicalName();
     private static final String LOG_MESSAGE = "HEADERS:\r\n${headers}\r\nBODY:\r\n${body}";
-    private static final String ROUTE_ID = FileConsumer.class.getCanonicalName();
+    private static final String ROUTE_ID = CamelLogger.class.getCanonicalName();
 
     public static void main(String... args) throws Exception {
         Main main = new Main();
@@ -19,10 +19,9 @@ public class FileConsumer {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("file://data/file-consumer/inbox?noop=true")
+                from("timer:myTimer?delay=3000")
                         .id(ROUTE_ID)
-                        .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE)
-                        .to("file:data/file-consumer/outbox");
+                        .log(LoggingLevel.INFO, LOGGER, "Test!");
             }
         });
 

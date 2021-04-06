@@ -11,7 +11,6 @@ public class OsgiBootstrapBlueprint extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         from("timer:timer?period=5000")
-                .id(ROUTE_ID)
                 .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE);
     }
 }

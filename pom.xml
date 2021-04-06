@@ -27,6 +27,7 @@
         <module>cxfrs-camel</module>
         <module>osgi-blueprint-multiple</module>
         <module>camel-concepts</module>
+        <module>camel-log</module>
     </modules>
 
     <properties>
