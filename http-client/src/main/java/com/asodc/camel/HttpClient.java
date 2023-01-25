@@ -19,7 +19,6 @@ public class HttpClient {
             public void configure() throws Exception {
                 from("timer:timer?repeatCount=1")
                         .removeHeaders("*")
-                        .setHeader("User-Agent", constant("CS-Team-List-Test;aseriesofdarkcaves@gmail.com"))
                         .setHeader(Exchange.HTTP_QUERY, constant("format=json&action=parse&origin=*&page=Portal:Teams"))
                         .setHeader(Exchange.HTTP_METHOD, constant(HttpMethods.GET))
                         .to("http4:liquipedia.net/counterstrike/api.php")
