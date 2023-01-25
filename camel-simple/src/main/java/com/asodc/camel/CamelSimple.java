@@ -20,5 +20,9 @@ public class CamelSimple {
                         .log("${body.class.name}");
             }
         });
+
+        context.start();
+        main.getCamelContexts().add(context);
+        main.run();
     }
 }
