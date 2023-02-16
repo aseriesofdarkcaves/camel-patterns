@@ -32,7 +32,12 @@
 
     <properties>
         <activemq.version>5.15.5</activemq.version>
-        <camel.version>2.24.0</camel.version>
+        <!--
+            NOTE: this is the latest version of Camel where the camel-maven-plugin isn't borked (the thing you use to
+            execute mvn camel:run). All versions of Camel from 2.25.x on are broken
+            (despite what is suggested here as a fix: https://issues.apache.org/jira/browse/CAMEL-16428).
+         -->
+        <camel.version>2.24.3</camel.version>
         <cxf.version>3.2.10</cxf.version>
         <jackson.version>2.10.1</jackson.version>
         <log4j2.version>2.12.1</log4j2.version>
