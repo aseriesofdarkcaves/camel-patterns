@@ -17,11 +17,11 @@ public class HttpClient {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("timer:timer?repeatCount=1")
+                from("timer://timer?repeatCount=1")
                         .removeHeaders("*")
                         .setHeader(Exchange.HTTP_QUERY, constant("format=json&action=parse&origin=*&page=Portal:Teams"))
                         .setHeader(Exchange.HTTP_METHOD, constant(HttpMethods.GET))
-                        .to("http4:liquipedia.net/counterstrike/api.php")
+                        .to("http4://liquipedia.net/counterstrike/api.php")
                         .convertBodyTo(String.class, "UTF-8")
                         .setHeader("TeamList", jsonpath("$.parse.links[*].['*']"))
                         .log("TeamList: ${headers.TeamList}");

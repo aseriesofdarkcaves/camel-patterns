@@ -19,7 +19,7 @@ public class CamelLogger {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("timer:myTimer?delay=3000")
+                from("timer://myTimer?delay=3000")
                         .id(ROUTE_ID)
                         .log(LoggingLevel.INFO, LOGGER, "Test!");
             }

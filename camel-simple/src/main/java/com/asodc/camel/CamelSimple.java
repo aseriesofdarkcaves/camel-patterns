@@ -14,7 +14,7 @@ public class CamelSimple {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("file:data/file-consumer/inbox?noop=true")
+                from("file://data/file-consumer/inbox?noop=true")
                         .id("OnglFileRoute")
                         .log("${body.class}")
                         .log("${body.class.name}");

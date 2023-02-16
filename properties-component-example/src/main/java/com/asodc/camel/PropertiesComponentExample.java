@@ -23,7 +23,7 @@ public class PropertiesComponentExample {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
-                from("timer:timer")
+                from("timer://timer")
                         .id(ROUTE_ID)
                         .log(LoggingLevel.INFO, LOGGER, "{{message}}");
             }

@@ -14,9 +14,9 @@ public class PollEnrichFile {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() {
-                from("timer:start?delay=1000")
+                from("timer://start?delay=1000")
                         .pollEnrich()
-                        .simple("file:data/content-enricher?fileName=Dummy.txt" +
+                        .simple("file://data/content-enricher?fileName=Dummy.txt" +
                                 "&charset=UTF-8" +
                                 "&preMove=Staging" +
                                 "&move=Success/${file:name.noext}-${date:now:yyyyMMddHHmmssSSS}.${file:ext}" +

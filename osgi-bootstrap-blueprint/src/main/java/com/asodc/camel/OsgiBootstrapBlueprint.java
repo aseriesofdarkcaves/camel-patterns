@@ -10,7 +10,7 @@ public class OsgiBootstrapBlueprint extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("timer:timer?period=5000")
+        from("timer://timer?period=5000")
                 .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE);
     }
 }

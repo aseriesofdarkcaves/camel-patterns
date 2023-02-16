@@ -14,7 +14,7 @@ public class SetHeader {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() {
-                from("timer:start?repeatCount=1")
+                from("timer://start?repeatCount=1")
                         .id("SetHeaderRoute")
                         .setHeader("SetHeader-1").constant("Header set via fluent builder chain")
                         .setHeader("SetHeader-2", constant("Header set via expression"))

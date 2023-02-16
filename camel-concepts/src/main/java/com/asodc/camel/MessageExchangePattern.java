@@ -22,16 +22,16 @@ public class MessageExchangePattern {
             @Override
             public void configure() {
                 // InOnly JMS Producer to trigger the jmsInOutConsumer
-                from("timer:timer?period=3000").routeId("jmsInOnlyProducer")
+                from("timer://timer?period=3000").routeId("jmsInOnlyProducer")
                         .setBody().constant("This message was produced via jmsInOnlyProducer")
-                        .to(ExchangePattern.InOnly, "jms:queue:RequestReplyTest.Request");
+                        .to(ExchangePattern.InOnly, "jms://queue:RequestReplyTest.Request");
 
                 // InOut JMS Consumer - using replyTo implicitly sets the MEP to InOut
-                from("jms:queue:RequestReplyTest.Request?replyTo=RequestReplyTest.Response").routeId("jmsInOutConsumer")
+                from("jms://queue:RequestReplyTest.Request?replyTo=RequestReplyTest.Response").routeId("jmsInOutConsumer")
                         .setBody().constant("This message was produced by jmsInOutConsumer");
 
                 // This just consumes the reply queue and logs a message to the console
-                from("jms:queue:RequestReplyTest.Response").routeId("jmsConsumerLogger")
+                from("jms://queue:RequestReplyTest.Response").routeId("jmsConsumerLogger")
                         .log("Consumed JMS message from RequestReplyTest.Response queue... ${body}");
             }
         });

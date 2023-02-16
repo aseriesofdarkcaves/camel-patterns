@@ -40,7 +40,7 @@ public class OrderRoute extends RouteBuilder {
         JAXRSServerFactoryBean jaxrsServerFactoryBean = new JAXRSServerFactoryBean();
         jaxrsServerFactoryBean.setProvider(JacksonJsonProvider.class);
 
-        from("cxfrs:http://localhost:8080" +
+        from("cxfrs://http://localhost:8080" +
                 "?resourceClasses=com.asodc.camel.RestOrderService" +
                 "&bindingStyle=SimpleConsumer")
                 .toD("direct:${headers.operationName}");

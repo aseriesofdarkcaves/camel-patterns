@@ -22,7 +22,7 @@ public class FileConsumer {
                 from("file://data/file-consumer/inbox?noop=true")
                         .id(ROUTE_ID)
                         .log(LoggingLevel.INFO, LOGGER, LOG_MESSAGE)
-                        .to("file:data/file-consumer/outbox");
+                        .to("file://data/file-consumer/outbox");
             }
         });
 
